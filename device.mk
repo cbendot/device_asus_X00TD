@@ -63,9 +63,10 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.device.rc
 
-# Sensor config
+# Sensors
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sensors/sensors_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+    $(DEVICE_PATH)/configs/sensors/sensors_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    $(DEVICE_PATH)/configs/sensors/android.hardware.sensors@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.sensors@1.0-service.rc
 
 # Thermal
 PRODUCT_COPY_FILES += \
