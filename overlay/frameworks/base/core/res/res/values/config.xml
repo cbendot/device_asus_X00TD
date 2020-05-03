@@ -22,52 +22,183 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
          (1-based arrays)
-         Point 1: (0, value[1]): lux <= 0
-         Point 2: (level[1], value[2]): 0 < lux <= level[1]
-         Point 3: (level[2], value[3]): level[2] < lux <= level[3]
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
          ...
-         Point N+1: (level[N], value[N+1]): level[N] < lux
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
          The control points must be strictly increasing.  Each control point
          corresponds to an entry in the brightness backlight values arrays.
-         For example, if LUX == level[1] (first element of the levels array)
+         For example, if lux == level[1] (first element of the levels array)
          then the brightness will be determined by value[2] (second element
          of the brightness values array).
          Spline interpolation is used to determine the auto-brightness
-         backlight values for LUX levels between these control points.
+         backlight values for lux levels between these control points.
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>1</item> <!-- pitch black -->
-        <item>5</item> <!-- dark indoor -->
-        <item>10</item> <!-- twilight -->
-        <item>50</item> <!-- dim indoor -->
-        <item>100</item> <!-- home -->
-        <item>300</item> <!-- office -->
-        <item>500</item> <!-- sunrise -->
-        <item>1000</item> <!-- overcast -->
-        <item>3000</item> <!-- indirect sun -->
-        <item>10000</item> <!-- daylight -->
+        <item>1</item>
+        <item>15</item>
+        <item>30</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>650</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>7000</item>
+        <item>10000</item>
+        <item>12500</item>
+        <item>15000</item>
     </integer-array>
 
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
+    <!-- Array of desired screen brightness in nits corresponding to the lux values
+         in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
+         config_screenBrightnessMaximumNits, the display brightness is defined as the measured
+         brightness of an all-white image.
+         If this is defined then:
+            - config_autoBrightnessLcdBacklightValues should not be defined
+            - config_screenBrightnessNits must be defined
+            - config_screenBrightnessBacklight must be defined
+         This array should have size one greater than the size of the config_autoBrightnessLevels
+         array. The brightness values must be non-negative and non-decreasing. This must be
+         overridden in platform specific overlays -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>8</item>
+        <item>11</item>
+        <item>35</item>
+        <item>52</item>
+        <item>67</item>
+        <item>81</item>
+        <item>103</item>
+        <item>119</item>
+        <item>130</item>
+        <item>138</item>
+        <item>151</item>
+        <item>164</item>
+        <item>176</item>
+        <item>229</item>
+        <item>264</item>
+        <item>291</item>
+        <item>303</item>
+        <item>310</item>
+        <item>314</item>
+        <item>319</item>
+        <item>399</item>
+        <item>480</item>
+    </array>
+
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
+         values in the config_screenBrightnessBacklight array.  On OLED displays these  values
+         should be measured with an all white image while the display is in the fully on state.
+         Note that this value should *not* reflect the maximum brightness value for any high
+         brightness modes but only the maximum brightness value obtainable in a sustainable manner.
+         This array should be equal in size to config_screenBrightnessBacklight -->
+    <array name="config_screenBrightnessNits">
+        <item>6</item>
+        <item>8</item>
+        <item>11</item>
+        <item>35</item>
+        <item>52</item>
+        <item>67</item>
+        <item>81</item>
+        <item>103</item>
+        <item>119</item>
+        <item>130</item>
+        <item>138</item>
+        <item>151</item>
+        <item>164</item>
+        <item>176</item>
+        <item>229</item>
+        <item>264</item>
+        <item>291</item>
+        <item>303</item>
+        <item>310</item>
+        <item>314</item>
+        <item>319</item>
+        <item>399</item>
+        <item>405</item>
+    </array>
+
+    <!-- An array describing the screen's backlight values corresponding to the brightness
+         values in the config_screenBrightnessNits array.
+         This array should be equal in size to config_screenBrightnessNits. -->
+    <integer-array name="config_screenBrightnessBacklight">
         <item>2</item>
-        <item>10</item>
-        <item>18</item>
-        <item>29</item>
-        <item>48</item>
-        <item>74</item>
-        <item>107</item>
-        <item>152</item>
-        <item>194</item>
-        <item>254</item>
+        <item>4</item>
+        <item>7</item>
+        <item>22</item>
+        <item>33</item>
+        <item>42</item>
+        <item>51</item>
+        <item>65</item>
+        <item>75</item>
+        <item>82</item>
+        <item>87</item>
+        <item>95</item>
+        <item>103</item>
+        <item>111</item>
+        <item>144</item>
+        <item>166</item>
+        <item>183</item>
+        <item>191</item>
+        <item>195</item>
+        <item>198</item>
+        <item>201</item>
+        <item>251</item>
         <item>255</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The brightening threshold is calculated as
+         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisBrightLevels">
+        <item>800</item>
+        <item>3000</item>
+        <item>2000</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The darkening threshold is calculated as
+         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisDarkLevels">
+        <item>950</item>
+        <item>950</item>
+        <item>800</item>
+        <item>800</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+         values by calculating the index to use for lookup and then setting the constraint value
+         to the corresponding value of the array. The new brightening hysteresis constraint value
+         is the n-th element of config_dynamicHysteresisBrightLevels, and the new darkening
+         hysteresis constraint value is the n-th element of config_dynamicHysteresisDarkLevels.
+         The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+         condition                      calculated index
+         value < lux[0]                 0
+         lux[n] <= value < lux[n+1]     n+1
+         lux[MAX] <= value              MAX+1 -->
+    <integer-array name="config_dynamicHysteresisLuxLevels">
+        <item>30</item>
+        <item>300</item>
+        <item>5000</item>
     </integer-array>
 
     <!-- Screen brightness used to dim the screen when the user activity
@@ -77,7 +208,7 @@
 
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->
-    <integer name="config_screenBrightnessSettingDefault">128</integer>
+    <integer name="config_screenBrightnessSettingDefault">46</integer>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
