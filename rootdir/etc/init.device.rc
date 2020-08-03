@@ -1,4 +1,4 @@
- # Copyright (c) 2020, The Linux Foundation. All rights reserved.
+# Copyright (c) 2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -26,5 +26,65 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #
+on fs
+    # Add by AMT.meng.lv, 08/29/2019, Optimize the nvram_country sequence begin
+    start nvram_country
+    # Add by AMT.meng.lv, 08/29/2019, Optimize the nvram_country sequence end
 
-#
+on early-boot
+     chown system system /dev/input/event3  # stk3xXx-light
+     chown system system /dev/input/event4  # stk3xXx-proximity
+
+service nvram_country system/vendor/bin/nvram_country
+    user system
+    group system
+    oneshot
+    disabled
+
+on boot
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0660 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
+    chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
+
+    #add for als/ps permission by wildbook at 2019/09/03 start
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_enable
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_delay
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_calibrate
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_enable_wakeup
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_flush
+    chmod 0644 /sys/class/sensors/stk3x1x-proximity/sensors_name
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_enable
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_delay
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_calibrate
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_enable_wakeup
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_flush
+    chown system system /sys/class/sensors/stk3x1x-proximity/sensors_name
+
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_enable
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_delay
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_calibrate
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_enable_wakeup
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_flush
+    chmod 0644 /sys/class/sensors/stk3x1x-light/sensors_name
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_enable
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_delay
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_calibrate
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_enable_wakeup
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_flush
+    chown system system /sys/class/sensors/stk3x1x-light/sensors_name
+
+    chown radio radio sys/module/stk3x1x/parameters/call_status_flag
+    #add for als/ps permission by wildbook at 2019/09/03 end
+
+# Huaqin modify for ZQL1650-143 by wangxiang at 2018/01/23 start 
+    chmod 0666 /dev/fpsdev0
+    chown system system /dev/fpsdev0
+# Huaqin modify for ZQL1650-143 by wangxiang at 2018/01/23 end 
+# Huaqin add for ZQL1650-143 by wangxiang at 2018/02/09 end 
+    chmod 0666 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+# Huaqin add for ZQL1650-143 by wangxiang at 2018/02/09 end 
+
+on property:ro.config.versatility=*
+    write /proc/countrycode ${ro.config.versatility}
