@@ -17,8 +17,8 @@
 
 set -e
 
-export DEVICE=whyred
-export VENDOR=xiaomi
+export DEVICE=X00TD
+export VENDOR=asus
 export DEVICE_BRINGUP_YEAR=2020
 export DEVICE_COMMON=sdm660-common
 

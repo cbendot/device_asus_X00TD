@@ -25,15 +25,15 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from whyred device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-PRODUCT_BRAND := Xiaomi
-PRODUCT_DEVICE := whyred
-PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := lineage_whyred
-PRODUCT_MODEL := Redmi Note 5
+PRODUCT_BRAND := asus
+PRODUCT_DEVICE := X00TD
+PRODUCT_MANUFACTURER := asus
+PRODUCT_NAME := lineage_X00TD
+PRODUCT_MODEL := ASUS_X00TD
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+PRODUCT_GMS_CLIENTID_BASE := android-asus
 
-TARGET_VENDOR_PRODUCT_NAME := whyred
+TARGET_VENDOR_PRODUCT_NAME := asus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="whyred-user 8.1.0 OPM1.171019.011 V9.5.11.0.OEIMIFA release-keys"

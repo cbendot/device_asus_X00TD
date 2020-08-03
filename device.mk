@@ -22,9 +22,9 @@
 #
 
 # Inherit from sdm660-common
-$(call inherit-product, device/xiaomi/sdm660-common/sdm660.mk)
+$(call inherit-product, device/asus/sdm660-common/sdm660.mk)
 
-DEVICE_PATH := device/xiaomi/whyred
+DEVICE_PATH := device/asus/X00TD
 
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
@@ -42,19 +42,9 @@ PRODUCT_COPY_FILES += \
 # FM
 BOARD_HAVE_QCOM_FM := true
 
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
 # HW crypto
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -69,13 +59,9 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.device.rc
 
-# Shims
-PRODUCT_PACKAGES += \
-    libcamera_sdm660_shim
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
 # Inherit proprietary files
-$(call inherit-product-if-exists, vendor/xiaomi/whyred/whyred-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/X00TD/X00TD-vendor.mk)
