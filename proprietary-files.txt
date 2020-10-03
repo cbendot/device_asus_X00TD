@@ -675,6 +675,18 @@ vendor/lib64/libmmcamera_faceproc2.so
 vendor/lib64/libmmcamera_tintless_algo.so
 vendor/lib64/libmmcamera_tintless_bg_pca_algo.so
 
+# Display calibration
+vendor/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_panel.xml
+vendor/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_txd_panel.xml
+vendor/etc/qdcm_calib_data_td4310_1080p_video_mode_dsi_txd_panel.xml
+
+# Display firmware (Novatek)
+vendor/firmware/novatek_ts_fw_dj.bin
+vendor/firmware/novatek_ts_fw_txd.bin
+
+# Display firmware (Synaptics)
+vendor/firmware/startup_fw_update.img
+
 # Fingerprint
 product/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
 -vendor/app/QFingerprintService/QFingerprintService.apk
