@@ -16,10 +16,17 @@ $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 
-# Evolution-X Flags
-EVOLUTION_MAINTAINER := "ben863 (@ben863)"
+# Evolution-X
+EVO_BUILD_TYPE := UNOFFICIAL
+EVO_MAINTAINER := ben863
+WITH_GAPPS := true
 TARGET_GAPPS_ARCH := arm64
 TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_INCLUDE_STOCK_ARCORE := true
+EVO_DONATE_URL := https://paypal.me/cbendot
+EVO_SUPPORT_URL := https://t.me/ElasticsPerfDiscus
+BUILD_USERNAME := ben863
+BUILD_HOSTNAME := Evolution-X
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := evolution_X00TD
