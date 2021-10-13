@@ -164,7 +164,4 @@
     <integer-array name="config_keyboardTapVibePattern">
         <item>40</item>
     </integer-array>
-
-<!-- Smart Charging -->
-    <bool name="config_supportSmartCharging">true</bool>
 </resources>
