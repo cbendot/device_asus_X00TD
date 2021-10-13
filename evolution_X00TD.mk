@@ -22,11 +22,6 @@ EVO_MAINTAINER := ben863
 WITH_GAPPS := true
 TARGET_GAPPS_ARCH := arm64
 TARGET_FACE_UNLOCK_SUPPORTED := true
-TARGET_INCLUDE_STOCK_ARCORE := true
-EVO_DONATE_URL := https://paypal.me/cbendot
-EVO_SUPPORT_URL := https://t.me/ElasticsPerfDiscus
-BUILD_USERNAME := ben863
-BUILD_HOSTNAME := Evolution-X
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := evolution_X00TD
