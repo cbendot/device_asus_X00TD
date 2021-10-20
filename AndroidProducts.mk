@@ -5,8 +5,8 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/evolution_X00TD.mk
+    $(LOCAL_DIR)/arrow_X00TD.mk
 
 COMMON_LUNCH_CHOICES := \
-    evolution_X00TD-userdebug
+    arrow_X00TD-userdebug
 
