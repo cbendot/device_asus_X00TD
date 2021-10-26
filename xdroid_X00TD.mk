@@ -11,9 +11,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk
 
 # Inherit some common xd stuff
 $(call inherit-product, vendor/xdroid/config/common.mk)
-XDROID_BUILD_TYPE := STBL-4.4
 XDROID_BOOT_DARK := true
 XDROID_UI_BLUR := true
+DEVICE_MAINTAINER := ben863
 
 # Product spec
 TARGET_INCLUDE_WIFI_EXT := true

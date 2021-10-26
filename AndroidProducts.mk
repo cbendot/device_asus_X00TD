@@ -9,6 +9,5 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
     xdroid_X00TD-user \
-    xdroid_X00TD-userdebug \
-    xdroid_X00TD-eng
-
+    xdroid_X00TD-eng \
+    xdroid_X00TD-userdebug 
