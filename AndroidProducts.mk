@@ -18,5 +18,6 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
     rr_X00TD-user \
-    rr_X00TD-userdebug \
-    rr_X00TD-eng
+    rr_X00TD-eng \
+    rr_X00TD-userdebug
+    
