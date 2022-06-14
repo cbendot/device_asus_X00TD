@@ -9,17 +9,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common xd stuff
+# Inherit some common xdroidsp stuff
 $(call inherit-product, vendor/xdroid/config/common.mk)
-XDROID_BUILD_TYPE := STBL-4.4
-XDROID_BOOT_DARK := true
-XDROID_UI_BLUR := true
-DEVICE_MAINTAINER := ben863
-
-# Product spec
-TARGET_INCLUDE_WIFI_EXT := true
-TARGET_SUPPORTS_GOOGLE_RECORDER := true
-TARGET_BOOT_ANIMATION_RES := 1080
+XDROID_MAINTAINER := ben863
+XDROID_BOOT := 1080
+TARGET_SUPPORTS_GOOGLE_RECORDER := false
+TARGET_INCLUDE_STOCK_ARCORE := false
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_SUPPORTS_QUICK_TAP := true
 
 # Inherit from X00TD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
