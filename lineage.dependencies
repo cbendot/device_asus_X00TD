@@ -1,6 +1,26 @@
 [
   {
-    "repository": "device_asus_sdm660-common",
-    "target_path": "device/asus/sdm660-common"
+    "repository" : "cbendot/device_asus_X00TD",
+    "target_path": "device/asus/X00TD",
+    "branch"     : "18.1",
+    "remote"     : "github"
+  },
+  {
+    "repository" : "cbendot/device_asus_sdm660-common",
+    "target_path": "device/asus/sdm660-common",
+    "branch"     : "18.1",
+    "remote"     : "github"
+  },
+  {
+    "repository" : "cbendot/kernel_asus_sdm660",
+    "target_path": "kernel/asus/sdm660",
+    "branch"     : "hmp",
+    "remote"     : "github"
+  },
+  {
+    "repository" : "cbendot/vendor_asus",
+    "target_path": "vendor/asus",
+    "branch"     : "18.1"
+    "remote"     : "github"
   }
 ]
